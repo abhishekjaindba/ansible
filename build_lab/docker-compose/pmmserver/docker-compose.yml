@@ -1,0 +1,25 @@
+version: '3'
+services:
+  pmm-server:
+    image: percona/pmm-server:latest
+    ports:
+      - '80:80'
+      - '443:443'
+      - '8080:8080'
+    environment:
+      - SERVER_USER=admin
+      - SERVER_PASSWORD=admin
+      - METRICS_MEMORY=512M
+    volumes:
+      - pmm-data:/opt/prometheus/data
+      - pmm-data:/opt/consul-data
+      - pmm-data:/var/lib/mysql
+      - pmm-data:/var/lib/grafana
+      - pmm-data:/var/lib/nginx
+      - pmm-data:/var/lib/mongodb
+      - pmm-data:/var/lib/redis
+      - pmm-data:/var/lib/qan-api
+
+volumes:
+  pmm-data:
+
